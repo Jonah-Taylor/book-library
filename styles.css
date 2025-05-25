@@ -9,6 +9,10 @@ img {
     box-sizing: border-box;
 }
 
+.add-book-form {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .container {
     font-family: "Roboto", sans-serif;
     font-weight: bold;
@@ -84,9 +88,10 @@ img {
 }
 
 .book {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 3fr 1fr;
+    grid-template-rows: 0.5fr 2fr 1fr;
     padding: 6px;
     background-color: #bbbbbb;
     border: 2px solid #333333;
@@ -108,6 +113,27 @@ img {
     width: 100%;
 }
 
+.book-delete {
+    background-color: transparent;
+    border-radius: 15%;
+    z-index: 2;
+    justify-content: right;
+    align-self: top;
+    width: 20px;
+    height: 20px;
+    padding: 2px 4px;
+    box-sizing: content-box;
+}
+
+.book-delete:hover {
+    background-color: darkred;
+}
+
+.book-delete:active {
+    background-color: white;
+    filter: invert();
+}
+
 .book-title {
     grid-area: 1 / 2 / 2 / 3;
     background-color: white;
@@ -115,14 +141,44 @@ img {
     border-radius: 10px;
     text-align: center;
     color: #113333;
-    box-shadow: 2px 2px 4px black;
+    box-shadow: 1px 2px 4px black;
 }
 
 .book-info {
+    align-self: center;
+    padding: 10px;
     grid-area: 2 / 2 / 3 / 3;
     text-align: center;
+    color: black;
+    font-weight: normal;
+    font-style: italic;
 }
 
 .book-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
     grid-area: 3 / 2 / 4 / 3;
+    text-align: center;
+}
+
+.book-status > :first-child {
+    margin-bottom: 10px;
+}
+
+.book-status * {
+    color: black;
+}
+
+.book-status select {
+    border: none;
+    margin-top: 4px;
+    background-color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    padding: 3px 10px;
+    box-shadow: 0px 0px 2px black;
 }
