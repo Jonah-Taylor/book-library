@@ -1,0 +1,70 @@
+img {
+    width: 50px;
+    height: 50px;
+}
+
+* {
+    color: white;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+.header {
+    background-color: #225576;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    height: 20vh;
+}
+
+.header-top {
+    background-color: #114465;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+    box-shadow: 2px 2px 12px black;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    box-sizing: content-box;
+    padding: 5px 15px;
+    width: 40vw;
+    border-radius: 10px;
+    background-color: #d5d5d5;
+    outline: none;
+    border: none;
+    color: black;
+}
+
+.search-container img {
+    filter: invert();
+}
+
+.pfp {
+    filter: invert();
+}
+
+.header-bottom {
+    background-color: #225576;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.add-book {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: black;
+}
