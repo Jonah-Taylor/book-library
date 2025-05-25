@@ -2,8 +2,10 @@ let books = [];
 
 let bookDisplay = document.querySelector(".book-container");
 let searchFilter = document.querySelector(".search-bar");
-let addBook = document.querySelector(".add-book");
-let form = document.querySelector(".add-book-form");
+let addBookButton = document.querySelector(".add-book");
+let formDialog = document.querySelector(".form-dialog");
+let addBookForm = document.querySelector(".book-form");
+let cancelBookFormButton = document.querySelector(".book-form-cancel");
 
 function Book(
     title,
@@ -149,7 +151,27 @@ document.addEventListener("DOMContentLoaded", () => {
     searchFilter.addEventListener("keyup", (event) => {
         updateBookList();
     });
-    addBook.addEventListener("click", (e) => {
-        form.showModal();
+    addBookButton.addEventListener("click", (e) => {
+        formDialog.showModal();
+    });
+    cancelBookFormButton.addEventListener("click", (e) => {
+        formDialog.close();
+    });
+    addBookForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(addBookForm);
+        const title = formData.get("title");
+        const author = formData.get("author");
+        const pages = parseInt(formData.get("pages"), 10);
+        const status = formData.get("status");
+        const coverImgFile = formData.get("book-cover");
+        if (coverImgFile && coverImgFile.type.startsWith("image/")) {
+            imgURL = URL.createObjectURL(coverImgFile);
+            addBookToLibrary(title, author, pages, status, imgURL);
+        } else {
+            addBookToLibrary(title, author, pages, status);
+        }
+        updateBookList();
+        formDialog.close();
     });
 });

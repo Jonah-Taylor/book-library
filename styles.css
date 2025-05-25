@@ -9,7 +9,7 @@ img {
     box-sizing: border-box;
 }
 
-.add-book-form {
+.form-dialog {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -23,7 +23,7 @@ img {
     background-color: #eeeeee;
 }
 
-.add-book-form * {
+.form-dialog * {
     color: black;
 }
 
@@ -46,6 +46,11 @@ img {
 
 .book-form-question {
     row-gap: 5px;
+}
+
+#reading-status {
+    background-color: white;
+    font-weight: bold;
 }
 
 .book-form-buttons {
@@ -84,6 +89,9 @@ img {
 }
 
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     background-color: #225576;
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -136,6 +144,8 @@ img {
     padding: 10px 15px;
     border-radius: 10px;
     color: black;
+    border: none;
+    font-weight: bold;
 }
 
 .add-book:hover {
@@ -180,18 +190,18 @@ img {
 
 .book-delete {
     background-color: transparent;
-    border-radius: 15%;
+    border-radius: 50%;
     z-index: 2;
     justify-content: right;
     align-self: top;
     width: 20px;
     height: 20px;
-    padding: 2px 4px;
+    padding: 4px 4px;
     box-sizing: content-box;
 }
 
 .book-delete:hover {
-    background-color: darkred;
+    background-color: red;
 }
 
 .book-delete:active {
@@ -202,7 +212,9 @@ img {
 .book-title {
     grid-area: 1 / 2 / 2 / 3;
     background-color: white;
-    padding: 6px 10px;
+    width: 90%;
+    justify-self: center;
+    padding: 2px 5px;
     border-radius: 10px;
     text-align: center;
     color: #113333;
