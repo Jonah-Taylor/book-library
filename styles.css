@@ -39,7 +39,7 @@ img {
 .search-bar {
     box-sizing: content-box;
     padding: 5px 15px;
-    width: 40vw;
+    width: 30vw;
     border-radius: 10px;
     background-color: #ffffff;
     outline: none;
@@ -76,17 +76,53 @@ img {
     background-color: #999999;
 }
 .book-container {
-    border: 5px solid red;
     margin: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, clamp(100px, 16vw, 200px));
+    justify-content: center;
+    gap: 5vw;
+    grid-template-columns: repeat(auto-fit, clamp(350px, 30vw, 400px));
 }
 
 .book {
-    padding: 10px;
-    background-color: #999999;
-    border: none;
-    width: 80%;
-    aspect-ratio: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    padding: 6px;
+    background-color: #bbbbbb;
+    border: 2px solid #333333;
+    border-radius: 4px;
+    aspect-ratio: 3 / 2;
     box-shadow: 2px 2px 8px black;
+}
+
+.book-cover-container {
+    grid-area: 1 / 1 / 4 / 2;
+    height: 100%;
+    aspect-ratio: 2 / 3;
+    z-index: 1;
+    border: 2px solid black;
+}
+
+.book-cover {
+    height: 100%;
+    width: 100%;
+}
+
+.book-title {
+    grid-area: 1 / 2 / 2 / 3;
+    background-color: white;
+    padding: 6px 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: #113333;
+    box-shadow: 2px 2px 4px black;
+}
+
+.book-info {
+    grid-area: 2 / 2 / 3 / 3;
+    text-align: center;
+}
+
+.book-status {
+    grid-area: 3 / 2 / 4 / 3;
 }
