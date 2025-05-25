@@ -10,10 +10,75 @@ img {
 }
 
 .add-book-form {
-    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 6px solid #002243;
+    border-radius: 10px;
+    margin: none;
+    outline: none;
+    width: 50vw;
+    height: 70vh;
+    background-color: #eeeeee;
+}
+
+.add-book-form * {
+    color: black;
+}
+
+.form-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.book-form,
+.book-form-question {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-form {
+    margin-top: 20px;
+    row-gap: 20px;
+}
+
+.book-form-question {
+    row-gap: 5px;
+}
+
+.book-form-buttons {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.book-form-submit,
+.book-form-cancel {
+    width: 30%;
+    aspect-ratio: 2 / 1;
+    align-self: center;
+    justify-content: end;
+    border: none;
+    border-radius: 10px;
+    background-color: #225576;
+    color: white;
+    font-weight: bold;
+}
+
+.book-form-submit:hover,
+.book-form-cancel:hover {
+    background-color: #002243;
+}
+
+.book-form-submit:active,
+.book-form-cancel:active {
+    background-color: #001121;
 }
 
 .container {
+    position: relative;
     font-family: "Roboto", sans-serif;
     font-weight: bold;
 }
