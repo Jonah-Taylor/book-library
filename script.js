@@ -1,38 +1,71 @@
-document.addEventListener("DOMContentLoaded", () => {
-    let bookDisplay = document.querySelector(".book-container");
+let books = [];
 
-    let books = [];
+let bookDisplay = document.querySelector(".book-container");
+let searchFilter = document.querySelector(".search-bar");
 
-    function Book(title, author, pages, read, imgPath = "Images/no-cover.jpg") {
-        if (!new.target) {
-            throw Error("You must use 'new'!");
+function Book(title, author, pages, read, imgPath = "Images/no-cover.jpg") {
+    if (!new.target) {
+        throw Error("You must use 'new'!");
+    }
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.imgPath = imgPath;
+    this.info = function () {
+        let desc = title + " by " + author + ", " + pages + " pages, ";
+        if (read) {
+            desc += "was read";
+        } else {
+            desc += "not read yet";
         }
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
-        this.imgPath = imgPath;
-        this.info = function () {
-            let desc = title + " by " + author + ", " + pages + " pages, ";
-            if (read) {
-                desc += "was read";
-            } else {
-                desc += "not read yet";
-            }
-            return desc;
-        };
-    }
+        return desc;
+    };
+}
 
-    function addBookToLibrary(
-        name,
-        author,
-        pages,
-        read,
-        imgPath = "Images/no-cover.jpg",
-    ) {
-        books.push(new Book(name, author, pages, read, imgPath));
-    }
+function addBookToLibrary(
+    name,
+    author,
+    pages,
+    read,
+    imgPath = "Images/no-cover.jpg",
+) {
+    books.push(new Book(name, author, pages, read, imgPath));
+}
 
+function updateBookList() {
+    while (bookDisplay.firstChild) {
+        bookDisplay.removeChild(bookDisplay.firstChild);
+    }
+    for (let i = 0; i < books.length; i++) {
+        const book = books[i];
+        if (
+            book.title.toUpperCase().includes(searchFilter.value.toUpperCase())
+        ) {
+            const bookDiv = document.createElement("div");
+            bookDiv.classList.add("book");
+
+            // Add cover
+            const coverContainer = document.createElement("div");
+            coverContainer.classList.add("book-cover-container");
+            const cover = document.createElement("img");
+            cover.src = book.imgPath;
+            cover.classList.add("book-cover");
+            coverContainer.appendChild(cover);
+            bookDiv.appendChild(coverContainer);
+
+            // Add title
+            const title = document.createElement("h4");
+            title.classList.add("book-title");
+            title.innerText = book.title;
+            bookDiv.appendChild(title);
+
+            bookDisplay.appendChild(bookDiv);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
     addBookToLibrary(
         "The Hobbit",
         "J.R.R. Tolkien",
@@ -57,27 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
         true,
         "Images/frankenstein.jpg",
     );
-
-    for (let i = 0; i < books.length; i++) {
-        const book = books[i];
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("book");
-
-        // Add cover
-        const coverContainer = document.createElement("div");
-        coverContainer.classList.add("book-cover-container");
-        const cover = document.createElement("img");
-        cover.src = book.imgPath;
-        cover.classList.add("book-cover");
-        coverContainer.appendChild(cover);
-        bookDiv.appendChild(coverContainer);
-
-        // Add title
-        const title = document.createElement("h4");
-        title.classList.add("book-title");
-        title.innerText = book.title;
-        bookDiv.appendChild(title);
-
-        bookDisplay.appendChild(bookDiv);
-    }
+    updateBookList();
+    searchFilter.addEventListener("keyup", (event) => {
+        updateBookList();
+    });
 });
