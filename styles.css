@@ -41,7 +41,7 @@ img {
     padding: 5px 15px;
     width: 40vw;
     border-radius: 10px;
-    background-color: #d5d5d5;
+    background-color: #ffffff;
     outline: none;
     border: none;
     color: black;
@@ -67,4 +67,26 @@ img {
     padding: 10px 15px;
     border-radius: 10px;
     color: black;
+}
+
+.add-book:hover {
+    background-color: #aaaaaa;
+}
+.add-book:active {
+    background-color: #999999;
+}
+.book-container {
+    border: 5px solid red;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, clamp(100px, 16vw, 200px));
+}
+
+.book {
+    padding: 10px;
+    background-color: #999999;
+    border: none;
+    width: 80%;
+    aspect-ratio: 2 / 3;
+    box-shadow: 2px 2px 8px black;
 }
