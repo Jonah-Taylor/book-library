@@ -18,7 +18,7 @@ img {
     border-radius: 10px;
     margin: none;
     outline: none;
-    width: 50vw;
+    aspect-ratio: 2 / 3;
     height: 70vh;
     background-color: #eeeeee;
 }
