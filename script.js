@@ -4,7 +4,8 @@ let bookDisplay = document.querySelector(".book-container");
 let searchFilter = document.querySelector(".search-bar");
 let addBookButton = document.querySelector(".add-book");
 let formDialog = document.querySelector(".form-dialog");
-let addBookForm = document.querySelector(".book-form");
+let addBookFormButton = document.querySelector(".book-form");
+let submitBookFormButton = document.querySelector(".book-form-submit");
 let cancelBookFormButton = document.querySelector(".book-form-cancel");
 
 function Book(
@@ -157,9 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelBookFormButton.addEventListener("click", (e) => {
         formDialog.close();
     });
-    addBookForm.addEventListener("submit", (e) => {
+    submitBookFormButton.addEventListener("click", (e) => {
         e.preventDefault();
-        const formData = new FormData(addBookForm);
+        const formData = new FormData(addBookFormButton);
         const title = formData.get("title");
         const author = formData.get("author");
         const pages = parseInt(formData.get("pages"), 10);
