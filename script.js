@@ -8,25 +8,27 @@ let addBookFormButton = document.querySelector(".book-form");
 let submitBookFormButton = document.querySelector(".book-form-submit");
 let cancelBookFormButton = document.querySelector(".book-form-cancel");
 
-function Book(
-    title,
-    author,
-    pages,
-    readStatus,
-    imgPath = "Images/no-cover.jpg",
-) {
-    if (!new.target) {
-        throw Error("You must use 'new'!");
+class Book {
+    constructor(
+        title,
+        author,
+        pages,
+        readStatus,
+        imgPath = "Images/no-cover.jpg",
+    ) {
+        if (!new.target) {
+            throw Error("You must use 'new'!");
+        }
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+        this.imgPath = imgPath;
     }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
-    this.imgPath = imgPath;
-    this.info = function () {
-        let desc = "Written by " + author + " and has " + pages + " pages.";
-        return desc;
-    };
+
+    info() {
+        return `Written by ${this.author} and has ${this.pages} pages.`;
+    }
 }
 
 function addBookToLibrary(
